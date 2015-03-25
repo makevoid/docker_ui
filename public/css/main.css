@@ -1,0 +1,40 @@
+/* reset */
+
+* {
+  box-sizing: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* colors */
+
+body {
+  font-family: Gill Sans, Arial;
+  font-size: 110%;
+}
+
+a {
+  color: #25B;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #47D;
+}
+
+/* layout */
+
+nav a, a.btn {
+  display: inline;
+  background: #25B;
+  color: #FFF;
+  padding: 0.4%;
+  border-radius: 0.3em;
+  border: 1px solid #25B;
+}
+nav a:hover, a.btn:hover {
+  background: #FFF;
+  color: #25B;
+}

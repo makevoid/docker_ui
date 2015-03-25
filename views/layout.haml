@@ -1,0 +1,20 @@
+%html
+  %head
+    %title DockerUI
+    %link{ href: "/css/main.css", rel: "stylesheet", type: "text/css" }
+
+    %script{ type: "text/javascript" }
+      var Link = document.registerElement('link');
+      document.body.appendChild(new Link());
+
+    -# %link{ rel: "import", href: "link.html" }
+  %body
+    %header
+      %h1 DockerUI
+
+    %nav
+      %a{ href: "/" }       Containers
+      %a{ href: "/images" } Images
+
+    %section#container
+      = yield

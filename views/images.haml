@@ -1,0 +1,15 @@
+:ruby
+  images = Dok.images
+
+%h1 Images
+
+%a.btn{ href: js_void } Create an image
+
+- if images.empty?
+  %p No images available
+
+%ul
+  - for image in Dok.images
+    %li
+      = image.to_yaml
+      %a{ href: js_void } Spin up a container
