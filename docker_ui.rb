@@ -19,16 +19,16 @@ class DockerUI < Sinatra::Base
   ## (this should be auto generated, it is now semi-generated)
   ## - todo next scan files and auto generate routes
 
-  def route_gen(name)
+  def self.route_gen(name)
     get "/#{name}" do
       haml name.to_sym
     end
   end
 
   ROUTES = [
-    "/temp"
+    "/temp",
     "/examples/menu",
-    "/examples/submenu"
+    "/examples/submenu",
   ]
 
   for route in ROUTES
