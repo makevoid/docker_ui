@@ -1,15 +1,18 @@
-:ruby
-  images = Dok.images
-
 %h1 Images
 
-%a.btn{ href: js_void } Create an image
+-# %a.btn{ href: js_void } Create an image
+%a.btn{ is: "x-link", href: "/images", method: "post" } Create an image
 
 - if images.empty?
   %p No images available
 
 %ul
-  - for image in Dok.images
+  - for image in images
+    - info = Hashie::Mash.new image.info
     %li
-      = image.to_yaml
+      = info.RepoTags.join ", "
+      \-
+      = (info.VirtualSize * 10**-6).to_i
+      MB
+      =# image.to_yaml
       %a{ href: js_void } Spin up a container

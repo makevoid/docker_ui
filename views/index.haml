@@ -1,11 +1,10 @@
-:ruby
-  containers = Dok.containers
-
 %h1 Containers
 
 - if containers.empty?
   %p No containers available
 
 %ul
-  - for container in Dok.containers
-    %li= container.to_yaml
+  - for container in containers
+    - container = Hashie::Mash.new container.info
+    %li
+      = container.to_yaml.split("\n")[1..-1].join("<br>")

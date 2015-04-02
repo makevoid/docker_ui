@@ -2,7 +2,9 @@ require_relative "./config/env"
 
 class DockerUI < Sinatra::Base
 
+  require_relative "lib/helpers/dokh"
   require_relative "lib/helpers/ui"
+  helpers Helpers::DokH
   helpers Helpers::UI
 
   get "/" do
@@ -26,9 +28,9 @@ class DockerUI < Sinatra::Base
   end
 
   ROUTES = [
-    "/temp",
-    "/examples/menu",
-    "/examples/submenu",
+    "temp",
+    "examples/menu",
+    "examples/submenu",
   ]
 
   for route in ROUTES
