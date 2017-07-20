@@ -9,7 +9,7 @@ require 'yaml'
 
 
 # check docker
-status = Dok.images
+# status = Dok.images
 # TODO: fix
 # raise status.inspect
 # raise "Error, cannot initialize docker - status: #{status}" unless status.code == :ok

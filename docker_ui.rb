@@ -15,8 +15,17 @@ class DockerUI < Sinatra::Base
     haml :images
   end
 
+  post "/images" do
+    # TODO: wrap with Dok
+    container = Docker::Container.create('Cmd' => ['ls'], 'Image' => 'base')
 
-  # example
+    redirect "/"
+  end
+
+  post "/prune" do
+    Dok.prune
+    redirect "/"
+  end
 
   ## (this should be auto generated, it is now semi-generated)
   ## - todo next scan files and auto generate routes

@@ -14,6 +14,10 @@ class Dok
     new.images
   end
 
+  def self.prune
+    new.prune
+  end
+
   def initialize
 
   end
@@ -25,7 +29,7 @@ class Dok
     rescue Exception => e
       status = { status: :fail, exception: { message: e.message, object: e } }
     end
-    Mashie::Hash.new status
+    Hashie::Mash.new status
   end
 
   def containers
@@ -34,6 +38,18 @@ class Dok
 
   def images
     Docker::Image.all
+  end
+
+  def prune
+    %i(container image network volume).each do |section|
+      Docker.const_get(section.capitalize).prune
+    end
+
+    # executes all these:
+    # Docker::Container.prune
+    # Docker::Image.prune
+    # Docker::Network.prune
+    # Docker::Volume.prune # usually the trickiest
   end
 
   private

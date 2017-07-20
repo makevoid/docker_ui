@@ -26,15 +26,24 @@ a:hover {
 
 /* layout */
 
-nav a, a.btn {
+nav a, a.btn, input[type=submit].button {
   display: inline;
   background: #25B;
   color: #FFF;
   padding: 0.4%;
   border-radius: 0.3em;
   border: 1px solid #25B;
+  cursor: pointer;
+  width: 70px;
+  height: 33px;
+  font-size: 1.2em;
+  font-weight: bold;
 }
-nav a:hover, a.btn:hover {
+nav a:hover, a.btn:hover, nav input.button:hover {
   background: #FFF;
   color: #25B;
+}
+
+.inline {
+  display: inline-block;
 }

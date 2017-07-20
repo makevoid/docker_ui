@@ -36,6 +36,9 @@
     %nav
       %a{ href: "/" }       Containers
       %a{ href: "/images" } Images
+      %form.inline{ method: :post, action: "/prune" }
+        %input.button{ type: "submit", value: "Prune" }
+
 
     %section#container
       = yield

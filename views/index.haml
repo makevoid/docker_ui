@@ -5,6 +5,35 @@
 
 %ul
   - for container in containers
-    - container = Hashie::Mash.new container.info
+    - cont = Hashie::Mash.new container.info
     %li
-      = container.to_yaml.split("\n")[1..-1].join("<br>")
+      - split =  container.info.to_yaml.split "\n"
+      %h2 #{cont.Names.first[1..-1]} (#{cont.id[0..5]})
+      %pre
+        = split[1..-1].join "<br>"
+      %pre
+        = container.top
+
+      -# - container = container.first
+      -# = container.info.first
+      -# container = {"UID"=>"999", "PID"=>"8330", "PPID"=>"8304", "C"=>"0", "STIME"=>"05:39", "TTY"=>"?", "TIME"=>"00:00:00", "CMD"=>"redis-server *:6379"}
+
+      -# todo:
+      -# container[STIME]  > time (+ time since last restart)
+      -# container[CMD]    > run command & args
+      -# optional:
+      -# UID
+      -# PID && PPID
+
+      -# BUTTON
+      -# container.commit #=> image #=> image.id
+
+      -# INFO (desired output)
+      -# container.id
+      -# container.stats # host stats
+      -# container.info  # (
+      -#   ports:  [{}, ...],
+      -#   labels: { project: "project", service: "service" },
+      -#   networks # NetworkSettings.Networks.appname_default .NetworkID & .IPAddress
+      -#   mounts: # volumes { name: "id", source: "/...", destination: "/..." }
+      -# )

@@ -1,0 +1,4 @@
+# bundle exec rackup -p 3001
+
+
+bundle exec rerun -s KILL -p "**/*.{rb}" -- bundle exec rackup -p 3001
