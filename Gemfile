@@ -4,12 +4,14 @@ gem "haml"
 gem 'sucker_punch', '~> 1.0'
 
 # from gem
-#gem 'docker-api', require: 'docker'
+# # gem 'docker-api', require: 'docker'
 
-# from git (branch PR #488)
-gem 'docker-api', require: 'docker', branch: "add-prune", git: "https://github.com/odg0318/docker-api"
+# from git
+gem 'docker-api', require: 'docker',  git: "https://github.com/swipely/docker-api"
 
 gem "hashie", require: "hashie/mash"
+
+gem "rake"
 
 group :development do
   gem "puma"
@@ -17,6 +19,5 @@ group :development do
 end
 
 
-#, git: "https://github.com/swipely/docker-api.git"#, github: "swipely/docker-api"
 
 # swipely/dockly
