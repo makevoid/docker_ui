@@ -6,11 +6,18 @@
     %header
       %h1 DockerUI
     %nav
-      %a{ href: "/" } Containers
-      %a{ href: "/images" } Images
-      %form.inline{ method: :post, action: "/prune" }
-        %input.button{ type: "submit", value: "Prune" }
+      Nav:
+      %ul
+        %li
+          %a{ href: "/" } Containers
+          %a{ href: "/page2" } Second Link ...
 
+
+    -# # text style menu
+    -# %a{ href: "/" } Containers
+    -# \|
+    -# %a{ href: "/page2" } Second Link ...
+`
     %section#container
       = yield
 
