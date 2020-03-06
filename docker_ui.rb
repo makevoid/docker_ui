@@ -2,6 +2,14 @@ require_relative "./config/env"
 
 class DockerUI < Sinatra::Base
 
+  # ?
+  EXPR_ARG = nil
+  EXPR_LABELEDEXPR_ARG = nil
+  EXPR_LABELEDEXPR_END = nil
+  EXPR_ENDARG = nil
+  EXPR_ENDARGEXPR_END = nil
+  EXPR_LABELEDEXPR_FNAMEEXPR_ENDFN = nil
+
   require_relative "lib/helpers/dokh"
   require_relative "lib/helpers/ui"
   helpers Helpers::DokH
