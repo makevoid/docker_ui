@@ -1,10 +1,6 @@
 require_relative "./config/env"
 
 class DockerUI < Sinatra::Base
-  # todo: figure out which "metaprogramming magic" (:D) defines these constants ^^
-  constants = %w( EXPR_ARG EXPR_LABELEDEXPR_ARG EXPR_LABELEDEXPR_END EXPR_ENDARG EXPR_ENDARGEXPR_END EXPR_LABELEDEXPR_FNAMEEXPR_ENDFN )
-  for constant in constants; const_set constant, nil; end
-
   require_relative "lib/helpers/dokh"
   require_relative "lib/helpers/ui"
   helpers Helpers::DokH
@@ -48,5 +44,9 @@ class DockerUI < Sinatra::Base
   for route in ROUTES
     route_gen route
   end
+
+  # todo: figure out which "metaprogramming magic" (:D) defines these constants ^^
+  constants = %w( EXPR_ARG EXPR_LABELEDEXPR_ARG EXPR_LABELEDEXPR_END EXPR_ENDARG EXPR_ENDARGEXPR_END EXPR_LABELEDEXPR_FNAMEEXPR_ENDFN )
+  for constant in constants; const_set constant, nil; end
 
 end
