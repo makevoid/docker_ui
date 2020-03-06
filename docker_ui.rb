@@ -1,14 +1,9 @@
 require_relative "./config/env"
 
 class DockerUI < Sinatra::Base
-
-  # ?
-  EXPR_ARG = nil
-  EXPR_LABELEDEXPR_ARG = nil
-  EXPR_LABELEDEXPR_END = nil
-  EXPR_ENDARG = nil
-  EXPR_ENDARGEXPR_END = nil
-  EXPR_LABELEDEXPR_FNAMEEXPR_ENDFN = nil
+  # todo: figure out which "metaprogramming magic" (:D) defines these constants ^^
+  constants = %w( EXPR_ARG EXPR_LABELEDEXPR_ARG EXPR_LABELEDEXPR_END EXPR_ENDARG EXPR_ENDARGEXPR_END EXPR_LABELEDEXPR_FNAMEEXPR_ENDFN )
+  for constant in constants; const_set constant, nil; end
 
   require_relative "lib/helpers/dokh"
   require_relative "lib/helpers/ui"
