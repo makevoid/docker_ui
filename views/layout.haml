@@ -4,31 +4,42 @@
     %link{ href: "/css/main.css", rel: "stylesheet", type: "text/css" }
 
     :javascript
-      var anchor_proto = Object.create(HTMLAnchorElement.prototype);
-      anchor_proto.createdCallback = function() {
-        var method = this.attributes.method.value
-        var action = this.attributes.href.value
-        this.innerHTML = this.innerHTML + "<form style='display: none' action='"+action+"' method='"+method+"'></form>";
-        var form   = this.childNodes[1]
-        this.addEventListener('click', function(evt) {
-          evt.preventDefault();
-          form.submit()
-        });
-      };
-      var XLink = document.registerElement('x-link', {
-        prototype: Object.create(anchor_proto),
-        extends: 'a'
-      });
+      // trying out custom elements (web components 101)
 
+      class DockerUILink extends HTMLElement {
+        constructor() {
+          super()
+          var shadow = this.attachShadow({ mode: 'open' })
+          var wrapper = document.createElement('span')
+        }
+      }
+
+      // var anchor_proto = Object.create(HTMLAnchorElement.prototype)
+      // anchor_proto.createdCallback = function() {
+      //   var method = this.attributes.method.value
+      //   var action = this.attributes.href.value
+      //   this.innerHTML = `${this.innerHTML}<form style='display: none' action='"${action}"' method='"${method}"'></form>`
+      //   var form   = this.childNodes[1]
+      //   this.addEventListener('click', function(evt) {
+      //     evt.preventDefault()
+      //     form.submit()
+      //   })
+      // }
+
+      const XLink = customElements.define('x-link', DockerUILink)
+
+      // {
+      //   prototype: Object.create(anchor_proto),
+      //   extends: 'a'
+      // }
 
       document.addEventListener("DOMContentLoaded", function(event) {
-
-        // var xLink = new XLink();
-        // document.body.appendChild(xLink);
-      });
-
+        const xLink = new XLink()
+        document.body.appendChild(xLink)
+      })
 
     -# %link{ rel: "import", href: "link.html" }
+
   %body
     %header
       %h1 DockerUI
@@ -38,7 +49,6 @@
       %a{ href: "/images" } Images
       %form.inline{ method: :post, action: "/prune" }
         %input.button{ type: "submit", value: "Prune" }
-
 
     %section#container
       = yield
