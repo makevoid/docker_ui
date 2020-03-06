@@ -22,7 +22,7 @@ GEM
       excon (>= 0.47.0)
       multi_json
     excon (0.72.0)
-    ffi (1.9.18)
+    ffi (1.12.2)
     haml (5.0.1)
       temple (>= 0.8.0)
       tilt
