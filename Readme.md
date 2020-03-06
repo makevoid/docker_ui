@@ -1,11 +1,5 @@
 # Docker UI
 
-### status: in development
+A prototype for a docker UI to manage containers I made in 2015
 
-
-### TODO:
-
-Integrate with Gotty to make a kitematic-like experience
-
-
-I would like to complete this UI at some poing, right now I'm currently using tobegit3hub/seagull
+### status: (super-early-stage) prototype 
