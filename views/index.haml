@@ -14,19 +14,11 @@
       %pre
         = container.top
 
-      -# - container = container.first
-      -# = container.info.first
-      -# container = {"UID"=>"999", "PID"=>"8330", "PPID"=>"8304", "C"=>"0", "STIME"=>"05:39", "TTY"=>"?", "TIME"=>"00:00:00", "CMD"=>"redis-server *:6379"}
-
-      -# todo:
-      -# container[STIME]  > time (+ time since last restart)
-      -# container[CMD]    > run command & args
-      -# optional:
-      -# UID
-      -# PID && PPID
-
       -# BUTTON
-      -# container.commit #=> image #=> image.id
+      -# list of containers, buttons for each
+      -# container.restart #=> container.id
+      -# container.stop #=> image.id
+      -# container.delete #=> image.id
 
       -# INFO (desired output)
       -# container.id
