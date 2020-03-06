@@ -3,21 +3,19 @@ gem "sinatra"#, github: "sinatra/sinatra"
 gem "haml"
 gem 'sucker_punch', '~> 1.0'
 
-# from gem
-# # gem 'docker-api', require: 'docker'
-
-# from git
-gem 'docker-api', require: 'docker',  git: "https://github.com/swipely/docker-api"
-
 gem "hashie", require: "hashie/mash"
-
 gem "rake"
+
+# import docker-api
+
+# from git (current)
+# gem 'docker-api', require: 'docker',  git: "https://github.com/swipely/docker-api"
+
+# from gem (preferred)
+gem 'docker-api', require: 'docker'
+
 
 group :development do
   gem "puma"
   gem "rerun"
 end
-
-
-
-# swipely/dockly
