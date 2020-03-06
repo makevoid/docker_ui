@@ -40,16 +40,19 @@ class Dok
     Docker::Image.all
   end
 
+  # prune
+
+  # prune executes all these:
+  
+  # Docker::Container.prune
+  # Docker::Image.prune
+  # Docker::Network.prune
+  # Docker::Volume.prune # usually the trickiest
+
   def prune
     %i(container image network volume).each do |section|
       Docker.const_get(section.capitalize).prune
     end
-
-    # executes all these:
-    # Docker::Container.prune
-    # Docker::Image.prune
-    # Docker::Network.prune
-    # Docker::Volume.prune # usually the trickiest
   end
 
   private
