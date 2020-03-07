@@ -19,7 +19,7 @@ class Dok
   end
 
   def initialize
-
+    # ...
   end
 
   def check
@@ -43,7 +43,7 @@ class Dok
   # prune
 
   # prune executes all these:
-  
+
   # Docker::Container.prune
   # Docker::Image.prune
   # Docker::Network.prune
@@ -57,9 +57,6 @@ class Dok
 
   private
 
-  # def mash_all(entries)
-  #   entries.each do |entry|
-  #     Hashie::Mash.new entry
-  #   end
-  # end
+  # ...
+
 end
