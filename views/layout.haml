@@ -5,16 +5,22 @@
     %link{ href: "/css/vendor/bulma.css", rel: "stylesheet", type: "text/css" }
     %link{ href: "/css/main.css", rel: "stylesheet", type: "text/css" }
   %body
-    .container.is-fluid
-      %section.hero
-        %header
-          %h1 DockerUI
-    %nav
-      %ul
-        %li
-          %a{ href: "/" } Containers
-        %li
-          %a{ href: "/page2" } Second Link ...
+    %header
+      -# .is-medium
+      %section.hero.is-primary.is-bold 
+        .hero-body
+          .container
+            %h1.title
+              DockerUI
+            %h2.subtitle
+              Containers at your fingertips
+    .s20
 
-    %section#container
-      = yield
+    .container.is-fluid
+      .nav
+        %a.button.is-primary{ href: "/" } Containers
+        %a.button.is-info{ href: "/page2" } Second Link ...
+      .s20
+
+      %section#container#main
+        = yield

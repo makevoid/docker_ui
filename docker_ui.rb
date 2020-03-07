@@ -6,6 +6,8 @@ class DockerUI < Sinatra::Base
   helpers Helpers::DokH
   helpers Helpers::UI
 
+  # TODO: move to roda
+
   get "/" do
     haml :index
   end
@@ -44,9 +46,5 @@ class DockerUI < Sinatra::Base
   for route in ROUTES
     route_gen route
   end
-
-  # todo: figure out which "metaprogramming magic" (:D) defines these constants ^^
-  constants = %w( EXPR_ARG EXPR_LABELEDEXPR_ARG EXPR_LABELEDEXPR_END EXPR_ENDARG EXPR_ENDARGEXPR_END EXPR_LABELEDEXPR_FNAMEEXPR_ENDFN )
-  for constant in constants; const_set constant, nil; end
 
 end

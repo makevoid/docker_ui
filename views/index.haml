@@ -1,31 +1,45 @@
-%h1 Containers
+%h1.title Containers (#{containers.size})
 
-- if containers.empty?
-  %p No containers available
 
-%ul
-  - for container in containers
-    - cont = Hashie::Mash.new container.info
-    %li
-      - split =  container.info.to_yaml.split "\n"
-      %h2 #{cont.Names.first[1..-1]} (#{cont.id[0..5]})
-      %pre
-        = split[1..-1].join "<br>"
-      %pre
-        = container.top
+%section.containers.container.is-fluid
+  - if containers.empty?
+    %p.medium No containers available
 
-      -# BUTTON
-      -# list of containers, buttons for each
-      -# container.restart #=> container.id
-      -# container.stop #=> image.id
-      -# container.delete #=> image.id
+  - containers.each_slice(3) do |containers_slice|
+    .columns
+      - containers_slice.each do |container|
+        - split =  container.info.to_yaml.split "\n"
+        - cont = Hashie::Mash.new container.info
+        .column
+          .card
+            .card-header-title
+              %h2.title.medium #{cont.Names.first[1..-1]} (#{cont.id[0..5]})
+            .card-content
+              %p info:
+              %pre.mini
+                = split[1..-1].join "<br>"
+              .s30
+              %section
+                %h1.title.is-4 Processes:
+                - container.top.each do |process|
+                  - process = Hashie::Mash.new process
+                  .process= "<b>#{process.CMD}</b> (#{process.STIME})"
 
-      -# INFO (desired output)
-      -# container.id
-      -# container.stats # host stats
-      -# container.info  # (
-      -#   ports:  [{}, ...],
-      -#   labels: { project: "project", service: "service" },
-      -#   networks # NetworkSettings.Networks.appname_default .NetworkID & .IPAddress
-      -#   mounts: # volumes { name: "id", source: "/...", destination: "/..." }
-      -# )
+              .s20
+
+              %section.card-footer.actions
+                %a.card-footer-item.btn-restart{ href: "#", data: { "image-id": 1 } } Restart
+                %a.card-footer-item.btn-stop{    href: "#", data: { "image-id": 1 } } Stop
+                %a.card-footer-item.btn-delete{  href: "#", data: { "image-id": 1 } } Delete
+
+  -# INFO (desired output)
+  -# container.id
+  -# container.stats # host stats
+  -# container.info  # (
+  -#   ports:  [{}, ...],
+  -#   labels: { project: "project", service: "service" },
+  -#   networks # NetworkSettings.Networks.appname_default .NetworkID & .IPAddress
+  -#   mounts: # volumes { name: "id", source: "/...", destination: "/..." }
+  -# )
+
+.s100
